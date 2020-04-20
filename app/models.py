@@ -13,7 +13,7 @@ class Role(db.Model):
         return '<Role %r>' % self.name
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(64), unique=True, index=True)  # 添加email字段,使用电子邮件登录
@@ -24,8 +24,8 @@ class User(db.Model):
     @property  # 将方法变成属性的装饰器
     def password(self):  # 如果试图读取password则返回错误
         raise AttributeError('password is not a readable attribute')
-q
-    @password.setter   # 设置属性
+
+    @password.setter
     def password(self, password):  # 生成的哈希密码成为属性
         self.password_hash = generate_password_hash(password)
 
