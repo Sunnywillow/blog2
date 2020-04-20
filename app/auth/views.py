@@ -20,7 +20,7 @@ def login():
             # 如果 next 不存在 或者 next以/开始
                 next =url_for('main.index')
                 # 重定向到首页
-    return render_template('auth/login.html')  #  都存在得定向到登录页面
+    return render_template('auth/login.html', form=form)  #  都存在得定向到登录页面
 
 
 @auth.route('/logout')

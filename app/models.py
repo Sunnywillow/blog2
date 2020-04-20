@@ -24,7 +24,7 @@ class User(db.Model):
     @property  # 将方法变成属性的装饰器
     def password(self):  # 如果试图读取password则返回错误
         raise AttributeError('password is not a readable attribute')
-
+q
     @password.setter   # 设置属性
     def password(self, password):  # 生成的哈希密码成为属性
         self.password_hash = generate_password_hash(password)
